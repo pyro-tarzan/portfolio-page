@@ -1,0 +1,102 @@
+.footer{
+    background-color: rgb(216, 202, 0);
+    box-shadow: 0px -1px 5px 0px rgba(0, 0, 0, 0.199);
+    padding: 30px 0px 10px 0px;
+}
+
+.footer > div{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.main-part{
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.first-footer{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-self: center;
+}
+
+.icon-circle{
+    height: 35px;
+    width: 35px;
+    border-radius: 1.5em;
+    background-color: rgba(161, 151, 0, 0.74);
+    transition: background-color .3s ease-in-out;   
+}
+
+.icon-circle.blue{
+    &:hover{
+        background-color: rgb(0, 57, 245);
+    }
+}
+
+.icon-circle a span{
+    transition: color .3s ease-in-out;
+}
+
+.icon-circle a:hover span{
+    color: white;
+}
+
+.icon-circle.white:hover{
+    background-color: white;
+}
+
+.second-footer{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-self: center;
+}
+
+.second-footer .section{
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 800;
+    letter-spacing: .1em;
+    color: rgba(161, 151, 0, 0.74);
+    cursor: pointer;
+    transition: color .3s ease-in-out;
+    &:hover{
+        color: white;
+    }
+}
+
+.copy{
+    height: 10%;
+    align-self: center;
+    font-weight: 700;
+    color: rgba(161, 151, 0, 0.74);
+    padding: 10px 0px 5px 0px;
+    cursor: default;
+}
+
+.icon-circle a{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+}
+
+.icon-circle span{
+    font-size: 14pt;
+    font-weight: 700;
+    color: rgb(216, 202, 0);
+}
+
+.icon-circle span img{
+    width: 100%;
+    height: 100%;
+}

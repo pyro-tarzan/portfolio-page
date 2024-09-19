@@ -1,0 +1,65 @@
+@keyframes fadeInLeftRight {
+    0%{
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    100%{
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.intro{
+    position: relative;
+    margin-top: 130px;
+    height: 816px;
+    /* background-color: grey; */
+    background-image: url("./../../public/edu-lauton-TyQ-0lPp6e4-unsplash.jpg");
+    background-position: 0% 85%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.intro::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.center-container{
+    position: absolute;
+    background-color: rgba(182, 119, 119, 0);
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 40%;
+    z-index: 2;
+    color: white;
+    font-size: 18pt;
+    padding: 150px 55px;
+}
+
+.center-container h1{
+    font-weight: 700;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+    animation: fadeInLeftRight .3s forwards;
+    animation-delay: .6s;
+}
+
+.center-container h2{
+    font-weight: 500;
+    line-height: 1.25em;
+    animation: fadeInLeftRight .3s forwards;
+    animation-delay: .7s;
+}
+
+.yellow-span{
+    color: rgb(233, 217, 0);
+}

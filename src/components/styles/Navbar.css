@@ -1,0 +1,40 @@
+.title-name{
+    font-family: var(--font-geist-mono);
+    font-weight: 800;
+    color: #3D0301;
+}
+
+.nav-bar-height{
+    flex-shrink: 0;
+    height: 80px;
+}
+
+.v-title-name{
+    font-size: 38px;
+    font-weight: 900;
+    color: #D76C82;
+}
+
+.content-nav{
+    font-size: 18px;
+    font-family: var(--font-geist-mono);
+    color: #3D0301;
+    font-weight: 300;
+    transition: color .2s ease;
+    &:hover{
+        color: #D76C82;
+    }
+}
+
+.line-bottom{
+    border-bottom: 2px solid #fff4f3;
+    background-color: #FFF7F3;
+}
+
+.mearun-color{
+    color: #3D0301;
+}
+
+.ham-color-hambug{
+    background-color: #FFF7F3;
+}

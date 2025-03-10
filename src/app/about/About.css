@@ -1,0 +1,13 @@
+.aboutme-contents{
+    font-family: var(--font-geist-mono);
+}
+
+.heading-about{
+    font-size: 38px;
+    font-weight: 800;
+    color: #B03052;
+}
+
+.aboutme-contents p{
+    font-size: 18px;
+}

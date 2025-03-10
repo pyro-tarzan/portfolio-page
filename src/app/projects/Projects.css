@@ -1,0 +1,17 @@
+.project-contents{
+    font-family: var(--font-geist-mono);
+}
+
+.project-contents h1{
+    font-size: 38px;
+    font-weight: 800;
+    color: #B03052;
+}
+
+.project-contents ul{
+    font-size: 18px;
+}
+
+.project-contents li{
+    cursor: pointer;
+}

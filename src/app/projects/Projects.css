@@ -6,12 +6,43 @@
     font-size: 38px;
     font-weight: 800;
     color: #B03052;
+    /* text-align: center; */
+    /* grid-column: 1 / -1; */
 }
 
-.project-contents ul{
-    font-size: 18px;
+.proj-cont{
+    columns: 3;
+    column-gap: 30px;
+    width: 100%;
+    margin: auto;
 }
 
-.project-contents li{
-    cursor: pointer;
+.proj-desc{
+    display: inline-block;
+    width: 100%;
+    padding: 10px 0px;
+    box-sizing: border-box;
+}
+
+.proj-desc h2{
+    font-size: 20px;
+    font-weight: 800;
+    color: #B03052;
+    margin-bottom: 5px;
+}
+
+.proj-desc p{
+    text-align: justify;
+}
+
+@media (max-width: 1555px) {
+    .proj-cont{
+        columns: 2;
+    }
+}
+
+@media (max-width: 970px) {
+    .proj-cont{
+        columns: 1;
+    }
 }

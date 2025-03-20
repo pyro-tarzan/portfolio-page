@@ -1,0 +1,13 @@
+services:
+  portfolio-page:
+    container_name: portfolio-container
+    build:
+      context:  . # Use current directory for Dockerfile
+      dockerfile: Dockerfile  # Explicitly specify the Dockerfile (optional)
+    image:  portfolio-image
+    ports:
+      - "3000:3000" # Map Local Port to Container Port which is 3000
+    volumes:
+      - .:/app  # Sync Project files between Host and Container
+      - /app/node_modules # Prevents overwriting node_modules
+    command: npm run dev

@@ -1,40 +1,116 @@
-.title-name{
-    font-family: var(--font-geist-mono);
-    font-weight: 800;
-    color: #3D0301;
+
+/* Base styles for all screen sizes (Mobile First) */
+.navigation-bar{
+    font-family: var(--font-funnel-sans);
+    padding: 10px 20px;
+    box-shadow: 0px 0px 5px 1px #0000000a;
+    background-color: white;
 }
 
-.nav-bar-height{
-    flex-shrink: 0;
-    height: 80px;
+.nav-cont{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.v-title-name{
-    font-size: 38px;
-    font-weight: 900;
-    color: #D76C82;
+.vig-title span{
+    font-size: 24px;
+    font-weight: 500;
+    color: var(--secondary-dark-shade);
+    text-decoration: none;
+    transition: color 0.3s;
+    text-transform: uppercase;
 }
 
-.content-nav{
-    font-size: 18px;
-    font-family: var(--font-geist-mono);
-    color: #3D0301;
-    font-weight: 300;
-    transition: color .2s ease;
-    &:hover{
-        color: #D76C82;
+.nav-contents-cont{
+    display: none;
+}
+
+.mobile-menu{
+    display: block;
+}
+
+.hamburger-menu{
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.svg-icon{
+    width: 24px;
+    height: 24px;
+}
+
+.animation-menu{
+    background-color: white;
+    overflow: hidden;
+}
+
+.animation-menu ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.animation-menu ul li{
+    width: 100%;
+    padding: 5px 0px;
+}
+
+span.nav-content{
+    transition: color .15s ease;
+}
+
+span.nav-content:hover{
+    color: var(--secondary-color);
+}
+
+.animation-menu ul li a{
+    text-decoration: none;
+    display: block;
+}
+
+@media (min-width: 769px) {
+    .navigation-bar{
+        padding: 20px 80px;
+    }
+
+    .vig-title span{
+        font-size: 24px;
+    }
+
+    .nav-contents-cont{
+        display: block;
+    }
+
+    .mobile-menu{
+        display: none;
+    }
+
+    .list-nav-contents{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    span.nav-content{
+        padding: 10px 20px;
+        font-weight: 500;
+        font-size: 20px;
+    }
+
+    .animation-menu{
+        display: none !important;
     }
 }
 
-.line-bottom{
-    border-bottom: 2px solid #fff4f3;
-    background-color: #FFF7F3;
-}
-
-.mearun-color{
-    color: #3D0301;
-}
-
-.ham-color-hambug{
-    background-color: #FFF7F3;
+@media (min-width: 1201px) {
+    .navigation-bar{
+        padding: 20px 120px;
+    }
 }

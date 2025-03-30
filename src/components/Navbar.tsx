@@ -9,7 +9,6 @@ const navItems = [
     { name: "Home", path: "/" },
     { name: "About Me", path: "/about" },
     { name: "Projects", path: "/projects" },
-    { name: "Skills & Tech Stack", path: "/skills" },
     { name: "Contact", path: "/contact" }
 ];
 
@@ -17,26 +16,26 @@ const Navbar: React.FC = () => {
     const [menuOpen, setMenuOpen] = useState(false);
 
     return(
-        <nav className="bg-white line-bottom nav-bar-height">
-            <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-                <div className="flex-shrink-0">
+        <nav className="navigation-bar">
+            <div className="nav-cont">
+                <div className="vig-title">
                     <Link 
                         href="/"
                     >
-                        <span className="text-3xl cursor-pointer title-name">
-                            <span className="v-title-name">V</span>ignesh
+                        <span>
+                            Vignesh
                         </span>
                     </Link>
                 </div>
 
-                <div className="hidden md:block">
-                    <ul className="flex items-center space-x-8 text-lg font-semibold text-gray-700">
+                <div className="nav-contents-cont">
+                    <ul className="list-nav-contents">
                         {navItems.map((item) => (
                             <li key={item.path}>
                                 <Link 
                                     href={item.path}
                                 >
-                                    <span className="cursor-pointer content-nav">
+                                    <span className="nav-content">
                                         {item.name}
                                     </span>
                                 </Link>
@@ -46,17 +45,18 @@ const Navbar: React.FC = () => {
                 </div>
 
                 {/* Mobile Menu Toggle */}
-                <div className="md:hidden">
+                <div className="mobile-menu">
                     <button
                         aria-label="Toggle Menu"
+                        aria-expanded={menuOpen}
                         onClick={() => setMenuOpen((prev) => !prev)}
-                        className="focus:outline-none"
+                        className="hamburger-menu"
                     >
 
                         {/* Use SVG Icon for Hamburger Menu */}
                         {menuOpen ? (
                             <svg
-                                className="h-8 w-8 mearun-color"
+                                className="svg-icon"
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
@@ -70,7 +70,7 @@ const Navbar: React.FC = () => {
                             </svg>
                         ) : (
                             <svg
-                                className="h-8 w-8 mearun-color"
+                                className="svg-icon"
                                 fill="none"
                                 stroke="currentColor"
                                 viewBox="0 0 24 24"
@@ -94,13 +94,15 @@ const Navbar: React.FC = () => {
                         initial={{height: 0}}
                         animate={{height: "auto"}}
                         exit={{height: 0}}
-                        className="md:hidden overflow-hidden"
+                        className="animation-menu"
                     >
-                        <ul className="px-4 pt-2 pb-4 space-y-4 bg-color-hambug">
+                        <ul>
                             {navItems.map((item) => (
                                 <li key={item.path}>
-                                    <Link href={item.path}>
-                                        <span className="block px-3 py-2 rounded content-nav">
+                                    <Link
+                                        href={item.path}
+                                    >
+                                        <span className="nav-content">
                                             {item.name}                                 
                                         </span>
                                     </Link>

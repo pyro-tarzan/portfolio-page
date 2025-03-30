@@ -2,7 +2,7 @@
 import type { Metadata } from "next";
 
 // FONTS
-import { Geist, Geist_Mono } from "next/font/google";
+import { Funnel_Display, Funnel_Sans } from "next/font/google";
 
 // COMPONENTS
 import Navbar from "@/components/Navbar";
@@ -12,15 +12,15 @@ import AnimatedRootContainer from "@/components/AnimatedRootContainer";
 import "./globals.css";
 import "@/app/styles/Layout.css"
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
+const funnelDisplay = Funnel_Display({
+  variable: "--font-funnel-display",
+  subsets: ["latin"]
+})
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const funnelSans = Funnel_Sans({
+  variable: "--font-funnel-sans",
   subsets: ["latin"],
-});
+})
 
 export const metadata: Metadata = {
   title: "Portfolio Page",
@@ -35,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${funnelDisplay.variable} ${funnelSans.variable} antialiased`}
       >
         <Navbar />
         <main>

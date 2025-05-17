@@ -39,3 +39,23 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Logs
+logs
+*.log
+
+# Editor directories and files
+.idea
+.vscode
+*.swp
+*.swo
+
+# OS files
+Thumbs.db
+
+# Docker volumes
+docker-volume*/
+
+# Optional: cache directories
+.npm
+.eslintcache

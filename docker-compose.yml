@@ -1,0 +1,27 @@
+services:
+  portfolio_v2:
+    container_name: portfolio_dev_v2
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: portfolio_v2:1.0
+    ports:
+      - "3000:3000"
+    volumes:
+      - type: bind
+        source: ./
+        target: /app
+      - type: volume
+        source: portfolio_node_modules
+        target: /app/node_modules
+    environment:
+      - NODE_ENV=development
+      - CHOKIDAR_USEPOLLING=true
+    restart: unless-stopped
+    # Enable stdin_open and tty for interactive terminal
+    stdin_open: true
+    tty: true
+
+volumes:
+  portfolio_node_modules:
+    name: portfolio_node_modules

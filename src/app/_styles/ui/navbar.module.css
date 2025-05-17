@@ -1,0 +1,160 @@
+.navigationBar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+  }
+  
+  .titleLogo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+    letter-spacing: -0.5px;
+  }
+  
+  .navigationLinks {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 2rem;
+  }
+  
+  .navigationLinks li {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #555;
+    cursor: pointer;
+    position: relative;
+    padding: 0.5rem 0;
+    transition: color 0.3s ease;
+  }
+  
+  .navigationLinks li:hover {
+    color: #000;
+  }
+  
+  /* Underline effect for nav items */
+  .navigationLinks li::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #333;
+    transition: width 0.3s ease;
+  }
+  
+  .navigationLinks li:hover::after {
+    width: 100%;
+  }
+  
+  /* Active nav item */
+  .navigationLinks li.active {
+    color: #000;
+  }
+  
+  .navigationLinks li.active::after {
+    width: 100%;
+    background-color: #000;
+  }
+  
+  /* Hide mobile menu toggle by default */
+  .menuToggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+  }
+  
+  .hamburgerLine {
+    display: block;
+    width: 25px;
+    height: 2px;
+    margin: 5px 0;
+    background-color: #333;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+  
+  /* Media query for responsive design */
+  @media (max-width: 768px) {
+    .navigationBar {
+      padding: 1rem;
+    }
+  
+    .menuToggle {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .navigationLinks {
+      position: fixed;
+      top: 0;
+      right: 0;
+      height: 100vh;
+      width: 0;
+      overflow: hidden;
+      flex-direction: column;
+      background-color: white;
+      box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+      padding: 5rem 0 2rem 0;
+      transition: width 0.3s ease, padding 0.3s ease;
+      gap: 1.5rem;
+      align-items: center;
+    }
+  
+    .navigationLinks.menuOpen {
+      width: 75%;
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  
+    /* Animate hamburger to X when menu is open */
+    .menuOpen + .menuToggle .hamburgerLine:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+  
+    .menuOpen + .menuToggle .hamburgerLine:nth-child(2) {
+      opacity: 0;
+    }
+  
+    .menuOpen + .menuToggle .hamburgerLine:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+  
+    /* Full width active indicator on mobile */
+    .navigationLinks li {
+      width: 100%;
+      text-align: center;
+    }
+  
+    .navigationLinks li::after {
+      width: 0;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  
+    .navigationLinks li.active::after {
+      width: 30%;
+    }
+  }
+  
+  /* Optional: Add a subtle transition effect when scrolling */
+  @media (min-width: 769px) {
+    .navigationBar.scrolled {
+      padding: 0.75rem 2rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+  }

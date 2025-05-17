@@ -325,3 +325,36 @@
     color: #b91c1c;
     border: 1px solid #fecaca;
 }
+
+@media (max-width: 992px) {
+    .content,
+    .contactContent {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .aboutImage {
+        order: -1;
+    }
+}
+
+@media (max-width: 768px) {
+    .section {
+        padding: 4rem 0;
+    }
+
+    .sectionTitle {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .projectGrid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .container {
+        padding: 0 1.25rem;
+    }
+}

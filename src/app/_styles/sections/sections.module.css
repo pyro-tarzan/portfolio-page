@@ -134,37 +134,197 @@
 .skillsContainer {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 4rem;
+}
+
+.skillCategory {
+    position: relative;
+    padding: 2rem;
+    border-radius: 12px;
+    background-color: rgba(225, 225, 225, .5);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+    transition: transform .3s ease, box-shadow .3s ease;
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(240, 240, 240, 0.8);
+}
+
+.skillCategory:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(0, 0, 100, 0.06);
 }
 
 .skillCategory h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1.5rem;
-    color: #333;
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+    color: #222;
+    position: relative;
+    padding-bottom: 0.75rem;
+    font-weight: 700;
+}
+
+.skillCategory h3::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 60px;
+    background: linear-gradient(90deg, #0070f3, #00a8ff);
+    border-radius: 1.5px;
 }
 
 .skillsList {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
     gap: 1.5rem;
 }
 
 .skillItem {
-    width: 100%;
+    position: relative;
+    padding: 1.25rem;
+    border-radius: 8px;
+    background-color: white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    transition: all .3s ease;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-height: 120px;
 }
 
-.skillInfo {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: .5rem;
+.skillItem::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: linear-gradient(180deg, #0070f3, #00a8ff);
+    transition: all .2s ease;
+}
+
+.skillItem:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, .08);
+}
+
+.skillItem:hover::before {
+    width: 13px;
+}
+
+.skillIcon {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    color: #0070f3;
+    transition: transform .3s ease;
+}
+
+.skillItem:hover .skillIcon {
+    transform: scale(1.15);
 }
 
 .skillName {
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: #333;
+    margin-bottom: .5rem;
 }
 
 .skillLevel {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2px;
+    margin-top: auto;
+}
+
+.skillDot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #ddd;
+    transition: all .3s ease;
+}
+
+.skillDot.active {
+    background: linear-gradient(90deg, #0070f3, #00a8ff);
+}
+
+.skillPercentage {
+    font-size: .8rem;
     color: #888;
+    margin-top: .5rem;
+    font-weight: 500;
+}
+
+/* Category Specific Styles */
+.skillCategory:nth-child(1) .skillItem::before {
+    background: linear-gradient(180deg, #0070f3, #00d4ff);
+}
+
+.skillCategory:nth-child(1) .skillItem .skillIcon {
+    color: #0070f3;
+}
+
+.skillCategory:nth-child(2) .skillItem::before {
+    background: linear-gradient(180deg, #7928ca, #ff0080);
+}
+
+.skillCategory:nth-child(2) .skillItem .skillIcon {
+    color: #7928ca;
+}
+
+.skillCategory:nth-child(3) .skillItem::before {
+    background: linear-gradient(180deg, #ff4d4d, #f9cb28);
+}
+
+.skillCategory:nth-child(3) .skillItem .skillIcon {
+    color: #ff4d4d;
+}
+
+@media (max-width: 992px) {
+    .skillsList {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .skillsContainer {
+        gap: 3rem;
+    }
+
+    .skillCategory {
+        padding: 1.5rem;
+    }
+
+    .skillCategory h3 {
+        font-size: 1.4rem;
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .skillsList {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    .skillItem {
+        min-height: 100px;
+        padding: 1rem;
+    }
+
+    .skillIcon {
+        font-size: 1.8rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .skillName {
+        font-size: 0.95rem;
+    }
 }
 
 .skillBar {

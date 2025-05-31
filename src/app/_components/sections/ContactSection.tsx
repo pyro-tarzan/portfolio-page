@@ -14,10 +14,12 @@ const ContactSection: React.FC = () => {
         submitted: boolean;
         success: boolean;
         message: string;
+        loading: boolean;
     }>({
         submitted: false,
         success: false,
-        message: ""
+        message: "",
+        loading: false
     });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -36,7 +38,8 @@ const ContactSection: React.FC = () => {
             setFormStatus({
                 submitted: true,
                 success: false,
-                message: "Please fill in all fields."
+                message: "Please fill in all fields.",
+                loading: false
             });
             return;
         }
@@ -47,36 +50,65 @@ const ContactSection: React.FC = () => {
             setFormStatus({
                 submitted: true,
                 success: false,
-                message: "Please enter a valid email address."
+                message: "Please enter a valid email address.",
+                loading: false
             });
             return;
         }
 
+        // Set Loading State
+        setFormStatus(prev => ({
+            ...prev,
+            loading: true,
+            submitted: false
+        }));
+
         try{
-            await new Promise(resolve => setTimeout(resolve, 1000));
 
-            setFormData({ name: "", email: "", message: ""});
-
-            setFormStatus({
-                submitted: true,
-                success: true,
-                message: "Your message has been sent successfully."
+            const response = await fetch("/api/v1/contact", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(formData)
             });
 
-            // Reset Success Message after 5 Seconds
-            setTimeout(() => {
-                setFormStatus(prev => ({
-                    ...prev,
-                    submitted: false,
-                    message: ""
-                }));
-            }, 3000);
+            const result = await response.json();
+
+            if (response.ok) {
+                // Success
+                setFormData({name: "", email: "", message: ""});
+                setFormStatus({
+                    submitted: true,
+                    success: true,
+                    message: "Your message has been sent successfully!",
+                    loading: false
+                });
+
+                setTimeout(() => {
+                    setFormStatus(prev => ({
+                        ...prev,
+                        submitted: false,
+                        message: ""
+                    }));
+                }, 5000);
+            }
+            else {
+                // Server Error
+                setFormStatus({
+                    submitted: true,
+                    success: false,
+                    message: result.error || "Failed to send your message. Please try again later.",
+                    loading: false
+                });
+            }
 
         } catch (error) {
             setFormStatus({
                 submitted: true,
                 success: false,
-                message: "Failed to send your message. Please try after sometime."
+                message: "Failed to send your message. Please try after sometime.",
+                loading: false
             });
         }
     };
@@ -97,17 +129,38 @@ const ContactSection: React.FC = () => {
                         <div className={styles.contactDetails}>
                             <div className={styles.contactItem}>
                                 <span className={styles.contactLabel}>Email:</span>
-                                <a href="mailto:your.email@gmail.com" className={styles.contactLink}>your.email@gmail.com</a>
+                                <a 
+                                    href="mailto:your-email@gmail.com" 
+                                    className={styles.contactLink}
+                                    target="_blank"    
+                                    rel="noopener noreferrer"
+                                >
+                                    your-email@gmail.com
+                                </a>
                             </div>
 
                             <div className={styles.contactItem}>
                                 <span className={styles.contactLabel}>LinkedIn:</span>
-                                <a href="linkedIn" className={styles.contactLink}>LinkedIn</a>
+                                <a 
+                                    href="your-linkedin" 
+                                    className={styles.contactLink}
+                                    target="_blank"    
+                                    rel="noopener noreferrer"
+                                >
+                                    LinkedIn
+                                </a>
                             </div>
 
                             <div className={styles.contactItem}>
                                 <span className={styles.contactLabel}>GitHub:</span>
-                                <a href="github" className={styles.contactLink}>GitHub</a>
+                                <a 
+                                    href="your-github" 
+                                    className={styles.contactLink}
+                                    target="_blank"    
+                                    rel="noopener noreferrer"
+                                >
+                                    GitHub
+                                </a>
                             </div>
                         </div>
                     </div>
@@ -124,6 +177,7 @@ const ContactSection: React.FC = () => {
                                     onChange={handleChange}
                                     className={styles.formInput}
                                     placeholder="Your Name"
+                                    disabled={formStatus.loading}
                                 />
                             </div>
 
@@ -137,6 +191,7 @@ const ContactSection: React.FC = () => {
                                     onChange={handleChange}
                                     className={styles.formInput}
                                     placeholder="your.email@example.com"
+                                    disabled={formStatus.loading}
                                 />
                             </div>
 
@@ -150,10 +205,17 @@ const ContactSection: React.FC = () => {
                                     className={styles.formTextarea}
                                     placeholder="Your message..."
                                     rows={5}
+                                    disabled={formStatus.loading}
                                 />
                             </div>
 
-                            <button type="submit" className={styles.submitButton}>Send Message</button>
+                            <button 
+                                type="submit" 
+                                className={styles.submitButton}
+                                disabled={formStatus.loading}
+                            >
+                                {formStatus.loading ? "Sending..." : "Send Message"}
+                            </button>
 
                             {formStatus.submitted && (
                                 <div className={`${styles.formMessage} ${formStatus.success ? styles.success : styles.error}`}>

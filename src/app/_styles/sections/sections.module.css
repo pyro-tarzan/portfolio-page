@@ -31,7 +31,7 @@
     transform: translateX(-50%);
     width: 70px;
     height: 4px;
-    background: linear-gradient(90deg, #0070f3, #00a8ff);
+    background: var(--gradient-primary);
     border-radius: 2px;
 }
 
@@ -169,7 +169,7 @@
     bottom: 0;
     height: 3px;
     width: 60px;
-    background: linear-gradient(90deg, #0070f3, #00a8ff);
+    background: var(--gradient-primary);
     border-radius: 1.5px;
 }
 
@@ -201,7 +201,7 @@
     left: 0;
     width: 4px;
     height: 100%;
-    background: linear-gradient(180deg, #0070f3, #00a8ff);
+    background: var(--gradient-primary);
     transition: all .2s ease;
 }
 
@@ -217,7 +217,7 @@
 .skillIcon {
     font-size: 2.2rem;
     margin-bottom: 1rem;
-    color: #0070f3;
+    color: var(--primary-600);
     transition: transform .3s ease;
 }
 
@@ -283,6 +283,18 @@
 
 .skillCategory:nth-child(3) .skillItem .skillIcon {
     color: #ff4d4d;
+}
+
+.skillCategory:nth-child(1) .skillDot.active {
+    background: #0070f3;
+}
+
+.skillCategory:nth-child(2) .skillDot.active {
+    background: #7928ca;
+}
+
+.skillCategory:nth-child(3) .skillDot.active {
+    background: #ff4d4d;
 }
 
 @media (max-width: 992px) {
@@ -358,6 +370,7 @@
     border: 1px solid rgba(230, 230, 230, 0.8);
     position: relative;
     height: 280px;
+    height: auto;
     display: flex;
     flex-direction: column;
 }
@@ -386,6 +399,9 @@
 .projectImageContainer {
     width: 100%;
     height: 120px;
+    min-height: 120px;
+    max-height: 120px;
+    flex-shrink: 0;
     overflow: hidden;
     position: relative;
 }
@@ -444,17 +460,13 @@
     line-height: 1.4;
     margin: 0;
     flex: 1;
-    display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
 }
 
 .projectTechnologies {
     display: flex;
     flex-wrap: wrap;
     gap: 0.4rem;
-    margin-top: auto;
+    margin-top: .75rem;
 }
 
 .techTag {
@@ -470,7 +482,7 @@
 
 .projectCard:hover .techTag {
     background: linear-gradient(135deg, #e8f0fe, #d2e3fc);
-    color: #1967d2;
+    color: var(--primary-700);
     border-color: rgba(25, 103, 210, 0.2);
 }
 
@@ -488,13 +500,13 @@
 .repoIcon {
     font-size: 1rem;
     font-weight: bold;
-    color: #0070f3;
+    color: var(--primary-600);
     transition: transform 0.3s ease;
 }
 
 .repoText {
     font-size: 0.8rem;
-    color: #0070f3;
+    color: var(--primary-600);
     font-weight: 600;
 }
 
@@ -526,6 +538,8 @@
     
     .projectImageContainer {
         height: 140px;
+        min-height: 140px;
+        max-height: 140px;
     }
 }
 
@@ -538,6 +552,12 @@
     .projectCard {
         height: 280px;
     }
+
+    .projectImageContainer {
+        height: 120px;
+        min-height: 120px;
+        max-height: 120px;
+    }
     
     .projectContent {
         padding: 1rem;
@@ -546,11 +566,6 @@
     
     .projectTitle {
         font-size: 1rem;
-    }
-    
-    .projectDescription {
-        font-size: 0.85rem;
-        -webkit-line-clamp: 2;
     }
 }
 
@@ -566,6 +581,8 @@
     
     .projectImageContainer {
         height: 160px;
+        min-height: 160px;
+        max-height: 160px;
     }
     
     .projectContent {
@@ -578,7 +595,6 @@
     
     .projectDescription {
         font-size: 0.9rem;
-        -webkit-line-clamp: 3;
     }
 }
 
@@ -615,6 +631,13 @@
         rgba(255, 255, 255, 0.4),
         transparent
     );
+    background-size: 200px 100%;
+    opacity: 0;
+    animation: opacity .3s ease;
+}
+
+.projectCard:hover .projectImagePlaceholder::before {
+    opacity: 1;
     animation: shimmer 2s infinite;
 }
 
@@ -659,13 +682,13 @@
 }
 
 .contactLink {
-    color: #0070f3;
+    color: var(--primary-600);
     text-decoration: none;
     transition: color .3s ease;
 }
 
 .contactLink:hover {
-    color: #0051a8;
+    color: var(--primary-900);
 }
 
 .formGroup {
@@ -692,7 +715,7 @@
 .formInput:focus,
 .formTextarea:focus {
     outline: none;
-    border-color: #0070f3;
+    border-color: var(--primary-600);
 }
 
 .formTextarea {
@@ -722,13 +745,13 @@
 
 .success {
     background-color: #e6fffa;
-    color: #047857;
+    color: var(--success-dark);
     border: 1px solid #a7f3d0;
 }
 
 .error {
     background-color: #fef2f2;
-    color: #b91c1c;
+    color: var(--error-dark);
     border: 1px solid #fecaca;
 }
 

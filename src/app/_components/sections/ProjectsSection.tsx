@@ -50,12 +50,9 @@ const ProjectSections: React.FC = () => {
                                 <p className={styles.projectDescription}>{project.description}</p>
 
                                 <div className={styles.projectTechnologies}>
-                                    {project.technologies.slice(0, 3).map((tech, techIndex) => (
+                                    {project.technologies.map((tech, techIndex) => (
                                         <span key={techIndex} className={styles.techTag}>{tech}</span>
                                     ))}
-                                    {project.technologies.length > 3 && (
-                                        <span className={styles.techTag}>+{project.technologies.length - 3}</span>
-                                    )}
                                 </div>
 
                                 {project.repoUrl && (
